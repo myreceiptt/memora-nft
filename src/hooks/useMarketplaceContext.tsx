@@ -35,7 +35,7 @@ type TMarketplaceContext = {
   allAuctions: EnglishAuction[] | undefined;
   contractMetadata:
     | {
-        [key: string]: string | number;
+        [key: string]: string | null;
         name: string;
         symbol: string;
       }
