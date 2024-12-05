@@ -24,9 +24,6 @@ import { useReadContract } from "thirdweb/react";
 
 export type NftType = "ERC1155" | "ERC721";
 
-/**
- * Support for English auction coming soon.
- */
 const SUPPORT_AUCTION = false;
 
 type TMarketplaceContext = {
@@ -38,12 +35,12 @@ type TMarketplaceContext = {
   allAuctions: EnglishAuction[] | undefined;
   contractMetadata:
     | {
-        [key: string]: any;
+        [key: string]: string | number;
         name: string;
         symbol: string;
       }
     | undefined;
-  refetchAllListings: Function;
+  refetchAllListings: () => Promise<void>;
   isRefetchingAllListings: boolean;
   listingsInSelectedCollection: DirectListing[];
   supplyInfo: SupplyInfo | undefined;
@@ -81,8 +78,7 @@ export default function MarketplaceProvider({
       item.address.toLowerCase() === contractAddress.toLowerCase() &&
       item.chain.id === _chainId
   );
-  // You can remove this condition if you want to supported _any_ nft collection
-  // or you can update the entries in `NFT_CONTRACTS`
+
   if (!collectionSupported) {
     throw new Error(
       `OiOi, NFT collection at address ${contractAddress} is not supported on chain ID ${_chainId}.`
@@ -139,14 +135,6 @@ export default function MarketplaceProvider({
     },
   });
 
-  // const listingsInSelectedCollection = allValidListings?.length
-  //   ? allValidListings.filter(
-  //       (item) =>
-  //         item.assetContractAddress.toLowerCase() ===
-  //         contract.address.toLowerCase()
-  //     )
-  //   : [];
-
   const listingsInSelectedCollection =
     allValidListings?.filter(
       (item) =>
@@ -176,11 +164,6 @@ export default function MarketplaceProvider({
     isLoadingContractMetadata ||
     isLoadingValidListings ||
     isLoadingSupplyInfo;
-
-  // const supportedTokens: Token[] =
-  //   SUPPORTED_TOKENS.find(
-  //     (item) => item.chain.id === marketplaceContract.chain.id
-  //   )?.tokens || [];
 
   const supportedTokens: Token[] =
     SUPPORTED_TOKENS.find(

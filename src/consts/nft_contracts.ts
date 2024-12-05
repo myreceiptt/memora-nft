@@ -177,6 +177,6 @@ export const NFT_CONTRACTS: NftContract[] = [
     title: "KAWASAN ZERO",
     thumbnailUrl:
       "/nfts-icons/kawasan-zero.png",
-    type: "ERC721",
+    type: "ERC1155",
   },
 ];
