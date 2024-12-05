@@ -1,7 +1,7 @@
 import type { Chain } from "thirdweb";
 import { ethereum, polygon, base, baseSepolia } from "./chains";
 
-export type NftContract = {
+export type NftLaunch = {
   address: string;
   chain: Chain;
   type: "ERC1155" | "ERC721";
@@ -13,40 +13,12 @@ export type NftContract = {
 };
 
 /**
- * Below is a list of all NFT contracts supported by MEMORA NFT (DEMO).
+ * Below is a list of all NFT contracts launched by MEMORA NFT (DEMO).
  * This is of course hard-coded for demo purpose.
  *
  * In reality, the list should be dynamically fetched from our own data source.
  */
-export const NFT_CONTRACTS: NftContract[] = [
-  {
-    address: "0xc06fd77c1aec4dccefc2fe6b3649ec454585fb15",
-    chain: polygon,
-    title: "Anthropophobia Viruses",
-    thumbnailUrl: "/nfts-icons/anthropophobia-viruses.png",
-    type: "ERC721",
-  },
-  {
-    address: "0x6710e0f18270be32f9590503e306997b3162b83e",
-    chain: polygon,
-    title: "Logo Pabrik Roti",
-    thumbnailUrl: "/nfts-icons/logo-pabrik-roti.png",
-    type: "ERC721",
-  },
-  {
-    address: "0x6d2723cb02c558cf67473dc959ac08737b6129a9",
-    chain: polygon,
-    title: "The ROTY BROI",
-    thumbnailUrl: "/nfts-icons/the-roty-broi.png",
-    type: "ERC721",
-  },
-  {
-    address: "0xe75f06bff5f03769748374376443a43ff0d1fd85",
-    chain: ethereum,
-    title: "Prof. NOTA The Genesis",
-    thumbnailUrl: "/nfts-icons/prof-nota-genesis.png",
-    type: "ERC721",
-  },
+export const NFT_LAUNCHED: NftLaunch[] = [
   {
     address: "0xd2bf59352793087151d2740f6b5e3c845797a986",
     chain: polygon,
@@ -59,13 +31,6 @@ export const NFT_CONTRACTS: NftContract[] = [
     chain: ethereum,
     title: "Conserve Roty Broi",
     thumbnailUrl: "/nfts-icons/conserve-roty-broi.jpeg",
-    type: "ERC721",
-  },
-  {
-    address: "0x4309946De4Ac379E1dc0cB122dc347815898Ff2C",
-    chain: ethereum,
-    title: "/ˈdeTH ˌwiSH/",
-    thumbnailUrl: "/nfts-icons/deth-wish.gif",
     type: "ERC721",
   },
   {
@@ -83,24 +48,10 @@ export const NFT_CONTRACTS: NftContract[] = [
     type: "ERC721",
   },
   {
-    address: "0xdbd56714ac643801cAc572762eb32bA84a7E3df3",
-    chain: ethereum,
-    title: "Man Mallow Man",
-    thumbnailUrl: "/nfts-icons/man-mallow-man.png",
-    type: "ERC721",
-  },
-  {
     address: "0x369295d21063d51b76F23A683773963e03CBE742",
     chain: ethereum,
     title: "Art Meeting",
     thumbnailUrl: "/nfts-icons/art-meeting.gif",
-    type: "ERC721",
-  },
-  {
-    address: "0x2A9BCCa42173219ad3149CBad3108023382AcC52",
-    chain: ethereum,
-    title: "deTH wiSH in Vision Trip",
-    thumbnailUrl: "/nfts-icons/deth-wish-in-vision-trip.gif",
     type: "ERC721",
   },
   {
