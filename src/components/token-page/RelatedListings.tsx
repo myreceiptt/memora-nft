@@ -10,7 +10,7 @@ import {
 	Flex,
 	Text,
 } from "@chakra-ui/react";
-import { toEther } from "thirdweb";
+// import { toEther } from "thirdweb";
 import { MediaRenderer } from "thirdweb/react";
 
 export default function RelatedListings({

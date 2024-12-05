@@ -66,14 +66,14 @@ export default function MarketplaceProvider({
   let _chainId: number;
   try {
     _chainId = Number.parseInt(chainId);
-  } catch (err) {
-    throw new Error("Invalid chain ID");
+  } catch {
+    throw new Error("Invalid chain ID, OiOi!");
   }
   const marketplaceContract = MARKETPLACE_CONTRACTS.find(
     (item) => item.chain.id === _chainId
   );
   if (!marketplaceContract) {
-    throw new Error("Marketplace not supported on this chain");
+    throw new Error(`OiOi, marketplace not supported on chain ID ${_chainId}.`);
   }
 
   const collectionSupported = NFT_CONTRACTS.find(
@@ -83,9 +83,11 @@ export default function MarketplaceProvider({
   );
   // You can remove this condition if you want to supported _any_ nft collection
   // or you can update the entries in `NFT_CONTRACTS`
-  // if (!collectionSupported) {
-  //   throw new Error("Contract not supported on this marketplace");
-  // }
+  if (!collectionSupported) {
+    throw new Error(
+      `OiOi, NFT collection at address ${contractAddress} is not supported on chain ID ${_chainId}.`
+    );
+  }
 
   const contract = getContract({
     chain: marketplaceContract.chain,
@@ -112,8 +114,10 @@ export default function MarketplaceProvider({
 
   const isNftCollection = is1155 || is721;
 
-  if (!isNftCollection && !isChecking1155 && !isChecking721)
-    throw new Error("Not a valid NFT collection");
+  if (!isChecking1155 && !isChecking721 && !isNftCollection)
+    throw new Error(
+      `OiOi, address ${contractAddress} on chain ID ${_chainId} not a valid NFT collection.`
+    );
 
   const { data: contractMetadata, isLoading: isLoadingContractMetadata } =
     useReadContract(getContractMetadata, {
@@ -135,13 +139,20 @@ export default function MarketplaceProvider({
     },
   });
 
-  const listingsInSelectedCollection = allValidListings?.length
-    ? allValidListings.filter(
-        (item) =>
-          item.assetContractAddress.toLowerCase() ===
-          contract.address.toLowerCase()
-      )
-    : [];
+  // const listingsInSelectedCollection = allValidListings?.length
+  //   ? allValidListings.filter(
+  //       (item) =>
+  //         item.assetContractAddress.toLowerCase() ===
+  //         contract.address.toLowerCase()
+  //     )
+  //   : [];
+
+  const listingsInSelectedCollection =
+    allValidListings?.filter(
+      (item) =>
+        item.assetContractAddress.toLowerCase() ===
+        contract.address.toLowerCase()
+    ) ?? [];
 
   const { data: allAuctions, isLoading: isLoadingAuctions } = useReadContract(
     getAllAuctions,
@@ -166,10 +177,15 @@ export default function MarketplaceProvider({
     isLoadingValidListings ||
     isLoadingSupplyInfo;
 
+  // const supportedTokens: Token[] =
+  //   SUPPORTED_TOKENS.find(
+  //     (item) => item.chain.id === marketplaceContract.chain.id
+  //   )?.tokens || [];
+
   const supportedTokens: Token[] =
     SUPPORTED_TOKENS.find(
       (item) => item.chain.id === marketplaceContract.chain.id
-    )?.tokens || [];
+    )?.tokens ?? [];
 
   return (
     <MarketplaceContext.Provider
@@ -186,8 +202,7 @@ export default function MarketplaceProvider({
         listingsInSelectedCollection,
         supplyInfo,
         supportedTokens,
-      }}
-    >
+      }}>
       {children}
       {isLoading && (
         <Box
@@ -197,8 +212,7 @@ export default function MarketplaceProvider({
           backgroundColor="rgba(0, 0, 0, 0.7)"
           padding="10px"
           borderRadius="md"
-          zIndex={1000}
-        >
+          zIndex={1000}>
           <Spinner size="lg" color="purple" />
         </Box>
       )}
@@ -210,7 +224,7 @@ export function useMarketplaceContext() {
   const context = useContext(MarketplaceContext);
   if (context === undefined) {
     throw new Error(
-      "useMarketplaceContext must be used inside MarketplaceProvider"
+      "useMarketplaceContext must be used inside MarketplaceProvider, OiOi!"
     );
   }
   return context;

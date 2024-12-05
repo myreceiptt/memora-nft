@@ -49,7 +49,7 @@ export function Token(props: Props) {
   const {
     type,
     nftContract,
-    allAuctions,
+    // allAuctions,
     isLoading,
     contractMetadata,
     isRefetchingAllListings,
@@ -69,7 +69,7 @@ export function Token(props: Props) {
 
   const { data: ownedQuantity1155 } = useReadContract(balanceOf, {
     contract: nftContract,
-    owner: account?.address!,
+    owner: account?.address || "Unknown!",
     tokenId: tokenId,
     queryOptions: {
       enabled: !!account?.address && type === "ERC1155",
@@ -82,13 +82,21 @@ export function Token(props: Props) {
         nftContract.address.toLowerCase() && item.asset.id === BigInt(tokenId)
   );
 
-  const auctions = (allAuctions || []).filter(
-    (item) =>
-      item.assetContractAddress.toLowerCase() ===
-        nftContract.address.toLowerCase() && item.asset.id === BigInt(tokenId)
-  );
+  // const auctions = (allAuctions || []).filter(
+  //   (item) =>
+  //     item.assetContractAddress.toLowerCase() ===
+  //       nftContract.address.toLowerCase() && item.asset.id === BigInt(tokenId)
+  // );
 
   const allLoaded = !isLoadingNFT && !isLoading && !isRefetchingAllListings;
+
+  if (!allLoaded) {
+    return (
+      <Box textAlign="center">
+        <Text>Loading token details...</Text>
+      </Box>
+    );
+  }
 
   const ownedByYou =
     nft?.owner?.toLowerCase() === account?.address.toLowerCase();
@@ -124,7 +132,7 @@ export function Token(props: Props) {
               )}
 
               {nft?.metadata?.attributes &&
-                // @ts-ignore TODO FIx later
+                // @ts-expect-error TODO FIx later
                 nft?.metadata?.attributes.length > 0 && (
                   <NftAttributes attributes={nft.metadata.attributes} />
                 )}

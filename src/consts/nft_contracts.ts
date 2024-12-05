@@ -174,7 +174,7 @@ export const NFT_CONTRACTS: NftContract[] = [
   {
     address: "0xc3046681149f96746b362a64472fD4B1cd1E3347",
     chain: baseSepolia,
-    title: "MEMORA ZERO",
+    title: "KAWASAN ZERO",
     thumbnailUrl:
       "/nfts-icons/kawasan-zero.png",
     type: "ERC721",

@@ -4,7 +4,6 @@ import { client } from "@/consts/client";
 import { ConnectButton, darkTheme } from "thirdweb/react";
 import { createWallet, inAppWallet } from "thirdweb/wallets";
 import { ethereum, polygon, base, baseSepolia } from "thirdweb/chains";
-import { getGroupedNFTs } from "@/extensions/getGroupedNFTs";
 
 const dompets = [
   inAppWallet({
@@ -28,8 +27,6 @@ const dompets = [
 ];
 
 export function UserConnect() {
-  const supportedNFTs = getGroupedNFTs();
-
   return (
     <>
       <ConnectButton
@@ -41,7 +38,7 @@ export function UserConnect() {
               address: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
               name: "OiOi",
               symbol: "OiOi",
-              icon: "/memora-logo.png",
+              icon: "/erc20-icons/oioi.png",
             },
           ],
           [polygon.id]: [
@@ -49,7 +46,7 @@ export function UserConnect() {
               address: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df",
               name: "OiOi",
               symbol: "OiOi",
-              icon: "/memora-logo.png",
+              icon: "/erc20-icons/oioi.png",
             },
           ],
           [base.id]: [
@@ -57,7 +54,7 @@ export function UserConnect() {
               address: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
               name: "OiOi",
               symbol: "OiOi",
-              icon: "/memora-logo.png",
+              icon: "/erc20-icons/oioi.png",
             },
           ],
           [baseSepolia.id]: [
@@ -65,7 +62,7 @@ export function UserConnect() {
               address: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
               name: "OiOi",
               symbol: "OiOi",
-              icon: "/memora-logo.png",
+              icon: "/erc20-icons/oioi.png",
             },
           ],
         }}

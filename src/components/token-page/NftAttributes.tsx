@@ -17,7 +17,7 @@ export function NftAttributes({
   /**
    * Assume the NFT attributes follow the conventional format
    */
-  // @ts-ignore TODO Fix later
+  // @ts-expect-error TODO Fix later
   const items = attributes.filter(
     (item: Record<string, unknown>) => item.trait_type
   );
@@ -33,7 +33,7 @@ export function NftAttributes({
       </Text>
       <AccordionPanel pb={4}>
         <Flex direction="row" wrap="wrap" gap="3">
-          {/* @ts-ignore TODO Fix later */}
+          {/* @ts-expect-error TODO Fix later */}
           {items.map((item) => (
             <Card
               key={item.trait_type}

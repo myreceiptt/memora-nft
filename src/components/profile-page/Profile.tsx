@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { blo } from "blo";
 import { shortenAddress } from "thirdweb/utils";
-import type { Account } from "thirdweb/wallets";
+// import type { Account } from "thirdweb/wallets";
 import { ProfileMenu } from "./Menu";
 import { useState } from "react";
 import { NFT_CONTRACTS, type NftContract } from "@/consts/nft_contracts";
@@ -73,7 +73,8 @@ export function ProfileSection(props: Props) {
   const marketplaceContractAddress = MARKETPLACE_CONTRACTS.find(
     (o) => o.chain.id === chain.id
   )?.address;
-  if (!marketplaceContractAddress) throw Error("No marketplace contract found");
+  if (!marketplaceContractAddress)
+    throw Error("No marketplace contract found, OiOi!");
   const marketplaceContract = getContract({
     address: marketplaceContractAddress,
     chain,
@@ -112,6 +113,11 @@ export function ProfileSection(props: Props) {
           selectedCollection={selectedCollection}
           setSelectedCollection={setSelectedCollection}
         />
+        {error && (
+          <Box>
+            <Text>Error loading NFTs: {error.message}</Text>
+          </Box>
+        )}
         {isLoadingOwnedNFTs ? (
           <Box>
             <Text>Loading...</Text>
@@ -124,8 +130,7 @@ export function ProfileSection(props: Props) {
                   variant="soft-rounded"
                   onChange={(index) => setTabIndex(index)}
                   isLazy
-                  defaultIndex={0}
-                >
+                  defaultIndex={0}>
                   <TabList>
                     <Tab>Owned ({data?.length})</Tab>
                     <Tab>Listings ({listings.length || 0})</Tab>
@@ -134,8 +139,7 @@ export function ProfileSection(props: Props) {
                 </Tabs>
                 <Link
                   href={`/collection/${selectedCollection.chain.id}/${selectedCollection.address}`}
-                  color="gray"
-                >
+                  color="gray">
                   View collection <ExternalLinkIcon mx="2px" />
                 </Link>
               </Flex>
@@ -161,11 +165,15 @@ export function ProfileSection(props: Props) {
                             ? ensName
                             : shortenAddress(address)}{" "}
                           {isYou ? "do" : "does"} not own any NFT in this
-                          collection
+                          collection.
                         </Text>
                       </Box>
                     )}
                   </>
+                ) : isLoadingValidListings ? (
+                  <Box>
+                    <Text>Loading listings...</Text>
+                  </Box>
                 ) : (
                   <>
                     {listings && listings.length > 0 ? (
@@ -179,8 +187,7 @@ export function ProfileSection(props: Props) {
                               contract.address
                             }/token/${item.asset.id.toString()}`}
                             _hover={{ textDecoration: "none" }}
-                            w={250}
-                          >
+                            w={250}>
                             <Flex direction="column">
                               <MediaRenderer
                                 client={client}

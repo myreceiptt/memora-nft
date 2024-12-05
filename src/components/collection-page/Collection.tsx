@@ -38,17 +38,23 @@ export function Collection() {
     <>
       <Box mt="24px">
         <Flex direction="column" gap="4">
-          <MediaRenderer
-            client={client}
-            src={thumbnailImage}
-            style={{
-              marginLeft: "auto",
-              marginRight: "auto",
-              borderRadius: "20px",
-              width: "200px",
-              height: "200px",
-            }}
-          />
+          {isLoadingFirstNFT ? (
+            <Box>
+              <Text>Loading thumbnail...</Text>
+            </Box>
+          ) : (
+            <MediaRenderer
+              client={client}
+              src={thumbnailImage}
+              style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                borderRadius: "20px",
+                width: "200px",
+                height: "200px",
+              }}
+            />
+          )}
           <Heading mx="auto">
             {contractMetadata?.name || "Unknown collection"}
           </Heading>
@@ -56,8 +62,7 @@ export function Collection() {
             <Text
               maxW={{ lg: "500px", base: "300px" }}
               mx="auto"
-              textAlign="center"
-            >
+              textAlign="center">
               {contractMetadata.description}
             </Text>
           )}
@@ -67,8 +72,7 @@ export function Collection() {
             mx="auto"
             mt="20px"
             onChange={(index) => setTabIndex(index)}
-            isLazy
-          >
+            isLazy>
             <TabList>
               <Tab>Listings ({listingsInSelectedCollection.length || 0})</Tab>
               <Tab>

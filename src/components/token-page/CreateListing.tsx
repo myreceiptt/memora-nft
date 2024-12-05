@@ -71,8 +71,7 @@ export function CreateListing(props: Props) {
             <Flex
               direction="row"
               flexWrap="wrap"
-              justifyContent="space-between"
-            >
+              justifyContent="space-between">
               <Box>
                 <Text>Price</Text>
                 <Input
@@ -111,6 +110,7 @@ export function CreateListing(props: Props) {
                   borderRadius="full"
                   src={currency.icon}
                   mr="12px"
+                  alt={currency.symbol}
                 />
                 <Text my="auto">{currency.symbol}</Text>
               </Flex>
@@ -125,14 +125,14 @@ export function CreateListing(props: Props) {
                 key={token.tokenAddress}
                 onClick={() => setCurrency(token)}
                 display={"flex"}
-                flexDir={"row"}
-              >
+                flexDir={"row"}>
                 <Image
                   boxSize="2rem"
                   borderRadius="full"
                   src={token.icon}
                   ml="2px"
                   mr="14px"
+                  alt={token.symbol}
                 />
                 <Text my="auto">{token.symbol}</Text>
                 {token.tokenAddress.toLowerCase() ===
@@ -221,8 +221,7 @@ export function CreateListing(props: Props) {
               account,
             });
             refetchAllListings();
-          }}
-        >
+          }}>
           List
         </Button>
       </Flex>

@@ -2,7 +2,7 @@ import type { BaseTransactionOptions } from "thirdweb";
 import { isERC1155 } from "thirdweb/extensions/erc1155";
 import { isERC721 } from "thirdweb/extensions/erc721";
 
-export type GetSupplyInfo = {};
+export type GetSupplyInfo = Record<string, never>;
 
 export type SupplyInfo = {
   startTokenId: bigint;
@@ -31,8 +31,9 @@ export async function getSupplyInfo(
     };
     return data;
   } else {
-    const { nextTokenIdToMint, startTokenId, totalSupply, ownerOf, getNFT } =
-      await import("thirdweb/extensions/erc721");
+    const { nextTokenIdToMint, startTokenId, totalSupply } = await import(
+      "thirdweb/extensions/erc721"
+    );
     const [startTokenId_, maxSupply] = await Promise.allSettled([
       startTokenId(options),
       nextTokenIdToMint(options),

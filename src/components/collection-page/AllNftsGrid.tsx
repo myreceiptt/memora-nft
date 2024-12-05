@@ -10,6 +10,7 @@ import {
   useBreakpointValue,
   Text,
   Button,
+  Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import {
@@ -81,7 +82,7 @@ export function AllNftsGrid() {
             </Box>
           ))
         ) : (
-          <Box mx="auto">Loading...</Box>
+          <Box>Loading...</Box>
         )}
       </SimpleGrid>
       <Box
@@ -115,16 +116,15 @@ export function AllNftsGrid() {
             isDisabled={currentPageIndex === pages.length - 1}>
             <MdKeyboardDoubleArrowRight />
           </Button>
-          {/* <Select
+          <Select
             w="80px"
-            onChange={(e) => setItemsPerPage(Number(e.target.value))}
-          >
+            onChange={(e) => setItemsPerPage(Number(e.target.value))}>
             {[20, 40, 60].map((item) => (
               <option key={item} value={item}>
                 {item}
               </option>
             ))}
-          </Select> */}
+          </Select>
         </Flex>
       </Box>
     </>

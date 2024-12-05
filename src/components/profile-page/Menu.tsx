@@ -25,8 +25,7 @@ export function ProfileMenu(props: Props) {
       <Accordion
         allowToggle
         defaultIndex={[0]}
-        w={{ lg: "300px", base: "90vw" }}
-      >
+        w={{ lg: "300px", base: "90vw" }}>
         <AccordionItem>
           <Text>
             <AccordionButton>
@@ -46,10 +45,14 @@ export function ProfileMenu(props: Props) {
                 bg="transparent"
                 _hover={{ bg: "transparent" }}
                 opacity={item.address === selectedCollection.address ? 1 : 0.4}
-                onClick={() => setSelectedCollection(item)}
-              >
+                onClick={() => setSelectedCollection(item)}>
                 <Flex direction="row" gap="3">
-                  <Image src={item.thumbnailUrl ?? ""} w="40px" rounded="8x" />
+                  <Image
+                    src={item.thumbnailUrl ?? ""}
+                    w="40px"
+                    rounded="8x"
+                    alt={item.title}
+                  />
                   <Box my="auto">
                     <Text>{item.title ?? "Unknown collection"}</Text>
                   </Box>
