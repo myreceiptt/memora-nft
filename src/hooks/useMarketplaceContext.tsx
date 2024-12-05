@@ -9,6 +9,7 @@ import {
   SupplyInfo,
 } from "@/extensions/getLargestCirculatingTokenId";
 import { Box, Spinner } from "@chakra-ui/react";
+import { QueryObserverResult } from "@tanstack/react-query";
 import { createContext, type ReactNode, useContext } from "react";
 import { getContract, type ThirdwebContract } from "thirdweb";
 import { getContractMetadata } from "thirdweb/extensions/common";
@@ -40,7 +41,10 @@ type TMarketplaceContext = {
         symbol: string;
       }
     | undefined;
-  refetchAllListings: () => Promise<void>;
+  // refetchAllListings: () => Promise<void>;
+  refetchAllListings: () => Promise<
+    QueryObserverResult<DirectListing[], Error>
+  >; // <-- Updated here
   isRefetchingAllListings: boolean;
   listingsInSelectedCollection: DirectListing[];
   supplyInfo: SupplyInfo | undefined;
