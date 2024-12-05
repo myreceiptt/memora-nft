@@ -26,7 +26,7 @@ export default function FeaturedCards() {
         <h1 className="text-lg font-[family-name:var(--font-geist-mono)] font-semibold">
           CLAIM ASSETS
         </h1>
-        <Link href="/">
+        <Link href="/claim">
           <Image
             className="invert dark:invert-0"
             src="/memora-logo.png"
@@ -42,7 +42,7 @@ export default function FeaturedCards() {
         <h1 className="text-lg font-[family-name:var(--font-geist-mono)] font-semibold">
           CHECK PROFILE
         </h1>
-        <Link href="/">
+        <Link href="/profile">
           <Image
             className="invert dark:invert-0"
             src="/memora-logo.png"
