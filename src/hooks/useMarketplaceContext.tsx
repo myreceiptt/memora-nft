@@ -158,6 +158,10 @@ export default function MarketplaceProvider({
     getSupplyInfo,
     {
       contract,
+      tokenId: 0n,
+      queryOptions: {
+        enabled: !!contract,
+      },
     }
   );
 
