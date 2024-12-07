@@ -1,4 +1,4 @@
-import { NATIVE_TOKEN_ICON_MAP, Token } from "@/consts/supported_tokens";
+import { NATIVE_TOKEN_ICON_MAP, Token } from "@/consts/ft_contracts";
 import { useMarketplaceContext } from "@/hooks/useMarketplaceContext";
 import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {

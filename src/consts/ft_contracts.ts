@@ -1,5 +1,5 @@
 import type { Chain } from "thirdweb";
-import { ethereum, polygon, base, baseSepolia } from "./chains";
+import { ethereum, polygon, base, baseSepolia } from "thirdweb/chains";
 
 export type Token = {
   tokenAddress: string;
@@ -24,11 +24,6 @@ export const SUPPORTED_TOKENS: SupportedTokens[] = [
   {
     chain: ethereum,
     tokens: [
-      {
-        tokenAddress: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
-        symbol: "OiOi",
-        icon: "/erc20-icons/oioi.png",
-      },
       {
         tokenAddress: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
         symbol: "USDC",
@@ -55,9 +50,14 @@ export const SUPPORTED_TOKENS: SupportedTokens[] = [
     chain: base,
     tokens: [
       {
-        tokenAddress: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
+        tokenAddress: "0xba0032620d88D9b16752CbDE75593c080C3d38de",
         symbol: "OiOi",
         icon: "/erc20-icons/oioi.png",
+      },
+      {
+        tokenAddress: "0xAbb6f5F95A11a4c91a409074B30e4523B4E100fb",
+        symbol: "MMR",
+        icon: "/erc20-icons/memora.png",
       },
       {
         tokenAddress: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
@@ -70,9 +70,14 @@ export const SUPPORTED_TOKENS: SupportedTokens[] = [
     chain: baseSepolia,
     tokens: [
       {
-        tokenAddress: "0x83fD0F66eA4f55D846c44539fD7BdB8F0a1d25Df", // Not exist. Change it!
+        tokenAddress: "0xcB2208E9Fb77591D3A0688C4459d976b1f16Ab53",
         symbol: "OiOi",
         icon: "/erc20-icons/oioi.png",
+      },
+      {
+        tokenAddress: "0x358428dd56867b4481637FF8E393D08755c55c82",
+        symbol: "MMR",
+        icon: "/erc20-icons/memora.png",
       },
     ],
   },

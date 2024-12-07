@@ -1,5 +1,5 @@
 import type { Chain } from "thirdweb";
-import { polygon, base, baseSepolia } from "./chains";
+import { ethereum, polygon, base, baseSepolia } from "thirdweb/chains";
 
 type MarketplaceContract = {
   address: string;
@@ -11,10 +11,10 @@ type MarketplaceContract = {
  * Only list one marketplace contract address for each chain.
  */
 export const MARKETPLACE_CONTRACTS: MarketplaceContract[] = [
-  // {
-  //   address: "0xC0b5e3111B8f09D3242C792C59e13857b62B0C78", // ENDHONESA DIGITAL
-  //   chain: ethereum,
-  // },
+  {
+    address: "0xC0b5e3111B8f09D3242C792C59e13857b62B0C78", // ENDHONESA DIGITAL
+    chain: ethereum,
+  },
   {
     address: "0xC979B5AA97C513d8fCd48DDbe908C998455530d8", // ENDHONESA DIGITAL
     chain: polygon,

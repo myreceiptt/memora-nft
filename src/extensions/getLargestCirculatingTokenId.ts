@@ -1,8 +1,11 @@
 import type { BaseTransactionOptions } from "thirdweb";
+import { ThirdwebContract } from "thirdweb";
 import { isERC1155 } from "thirdweb/extensions/erc1155";
 import { isERC721 } from "thirdweb/extensions/erc721";
 
-export type GetSupplyInfo = Record<string, never>;
+export type GetSupplyInfo = {
+  contract: ThirdwebContract; // Add the contract field
+};
 
 export type SupplyInfo = {
   startTokenId: bigint;

@@ -1,13 +1,11 @@
-"use client";;
-import { use } from "react";
+"use client";
 
+import { use } from "react";
 import { Token } from "@/components/token-page/TokenPage";
 
-export default function ListingPage(
-  props: {
-    params: Promise<{ tokenId: string }>;
-  }
-) {
+export default function ListingPage(props: {
+  params: Promise<{ tokenId: string }>;
+}) {
   const params = use(props.params);
   const { tokenId } = params;
   if (!tokenId) {

@@ -3,7 +3,7 @@
 import { client } from "@/consts/client";
 import { MARKETPLACE_CONTRACTS } from "@/consts/marketplace_contract";
 import { NFT_CONTRACTS } from "@/consts/nft_contracts";
-import { SUPPORTED_TOKENS, Token } from "@/consts/supported_tokens";
+import { SUPPORTED_TOKENS, Token } from "@/consts/ft_contracts";
 import {
   getSupplyInfo,
   SupplyInfo,
@@ -158,10 +158,6 @@ export default function MarketplaceProvider({
     getSupplyInfo,
     {
       contract,
-      tokenId: 0n,
-      queryOptions: {
-        enabled: !!contract,
-      },
     }
   );
 

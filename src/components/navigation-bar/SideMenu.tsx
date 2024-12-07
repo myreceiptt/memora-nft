@@ -52,8 +52,8 @@ export function SideMenu() {
               <button
                 type="button"
                 className="flex items-center p-3 text-lg gap-x-2 text-foreground dark:text-background hover:text-background dark:hover:text-foreground bg-background dark:bg-foreground hover:bg-foreground dark:hover:bg-background rounded-lg border-2 border-solid border-transparent hover:border-background dark:hover:border-foreground font-[family-name:var(--font-geist-mono)] font-semibold transition-colors duration-300 ease-in-out">
-                <Link href="/" className="flex items-center">
-                  PROFILE {ensName ? `(${ensName})` : ""}
+                <Link href={`/profile/${ensName ? ensName : account?.address}`} className="flex items-center">
+                  PROFILE
                 </Link>
               </button>
               <button
@@ -63,7 +63,7 @@ export function SideMenu() {
                   onClick={() => {
                     if (wallet) disconnect(wallet);
                   }}
-                  href="/"
+                  href="#"
                   className="flex items-center">
                   LOG OUT
                 </Link>

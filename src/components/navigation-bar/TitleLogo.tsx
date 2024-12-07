@@ -7,14 +7,16 @@ export function TitleLogo() {
       <button
         type="button"
         className="rounded-lg border-2 border-solid border-transparent bg-background dark:bg-foreground hover:border-background hover:dark:border-foreground hover:bg-foreground hover:dark:bg-background transition-colors duration-300 ease-in-out items-center justify-center">
-        <Image
-          src="/memora-logo.png"
-          width={52}
-          height={52}
-          alt="Memora Logo"
-          className="invert-0 dark:invert hover:invert dark:hover:invert-0"
-          priority
-        />
+        <Link href="/" title="Welcome to the world of Memora NFT!">
+          <Image
+            src="/memora-logo.png"
+            width={52}
+            height={52}
+            alt="Memora Logo"
+            className="invert-0 dark:invert hover:invert dark:hover:invert-0"
+            priority
+          />
+        </Link>
       </button>
       <button
         type="button"
