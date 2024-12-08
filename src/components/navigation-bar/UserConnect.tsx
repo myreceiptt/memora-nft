@@ -33,7 +33,7 @@ export function UserConnect() {
         client={client}
         accountAbstraction={{
           factoryAddress: "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468",
-          chain: baseSepolia,
+          chain: base,
           gasless: true,
         }}
         chains={[ethereum, polygon, base, baseSepolia]}
