@@ -24,6 +24,8 @@ import FeaturedAssets from "@/components/home-page/FeaturedAssets";
 
 const FreeClaims: React.FC = () => {
   const smartAccount = useActiveAccount();
+  const [pesanSukses, setPesanSukses] = React.useState<string | null>(null);
+  const [pesanGagal, setPesanGagal] = React.useState<string | null>(null);
 
   return (
     <div className="flex flex-col gap-4 content-normal px-8 md:px-20 m-4">
@@ -52,22 +54,56 @@ const FreeClaims: React.FC = () => {
                 </code>
               </Link>
             </h4>
+            {pesanSukses && (
+              <h4 className="bg-foreground dark:bg-background px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold text-green-500 text-center">
+                {pesanSukses}
+              </h4>
+            )}
+            {pesanGagal && (
+              <h4 className="bg-foreground dark:bg-background px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold text-red-500">
+                {pesanGagal}
+              </h4>
+            )}
           </div>
           <div className="flex flex-col sm:flex-row gap-2 items-center">
             <NFTClaimer
               receiverAddress={smartAccount?.address}
               dropContract={bukhariVirtualCollectibles}
               tokenId={3n}
+              padaSukses={() => {
+                setPesanSukses("Alhamdulillah: Claim successful!");
+                setPesanGagal(null);
+              }}
+              padaGagal={(error) => {
+                setPesanGagal(`Masha'Allah: ${error.message}`);
+                setPesanSukses(null);
+              }}
             />
             <NFTClaimer
               receiverAddress={smartAccount?.address}
               dropContract={bukhariVirtualCollectibles}
               tokenId={4n}
+              padaSukses={() => {
+                setPesanSukses("Alhamdulillah: Claim successful!");
+                setPesanGagal(null);
+              }}
+              padaGagal={(error) => {
+                setPesanGagal(`Masha'Allah: ${error.message}`);
+                setPesanSukses(null);
+              }}
             />
             <NFTClaimer
               receiverAddress={smartAccount?.address}
               dropContract={bukhariVirtualCollectibles}
               tokenId={5n}
+              padaSukses={() => {
+                setPesanSukses("Alhamdulillah: Claim successful!");
+                setPesanGagal(null);
+              }}
+              padaGagal={(error) => {
+                setPesanGagal(`Masha'Allah: ${error.message}`);
+                setPesanSukses(null);
+              }}
             />
           </div>
         </main>
@@ -81,6 +117,8 @@ type NFTClaimerProps = {
   receiverAddress?: string;
   dropContract: ThirdwebContract;
   tokenId: bigint;
+  padaSukses: () => void;
+  padaGagal: (error: Error) => void;
 };
 
 const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
@@ -114,15 +152,17 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
             ) : null}
             {props.receiverAddress ? (
               <>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
-                  {nft?.metadata.name}
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  On {props.dropContract.chain.name}
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  You Own {ownedNfts?.toString() || "0"} Edition
-                </h2>
+                <div className="grid grid-col p-2">
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
+                    {nft?.metadata.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold">
+                    On {props.dropContract.chain.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-sm font-[family-name:var(--font-geist-sans)] font-semibold">
+                    You Own {ownedNfts?.toString() || "0"} Edition
+                  </h2>
+                </div>
                 <TransactionButton
                   unstyled
                   className="rounded-lg p-2 text-foreground dark:text-background hover:text-background hover:dark:text-foreground border-2 border-solid border-transparent bg-background dark:bg-foreground hover:border-background hover:dark:border-foreground hover:bg-foreground hover:dark:bg-background transition-colors duration-300 ease-in-out items-center justify-center text-lg leading-9 font-[family-name:var(--font-geist-mono)] font-semibold uppercase"
@@ -135,25 +175,27 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
                     })
                   }
                   onError={(error) => {
-                    alert(`Error: ${error.message}`);
+                    props.padaGagal(error);
                   }}
                   onTransactionConfirmed={async () => {
-                    alert("Claim successful!");
+                    props.padaSukses();
                   }}>
                   CLAIM NOW!
                 </TransactionButton>
               </>
             ) : (
               <>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
-                  {nft?.metadata.name}
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  On {props.dropContract.chain.name}!
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  Log in to Claim!
-                </h2>
+                <div className="grid grid-col p-2">
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
+                    {nft?.metadata.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold">
+                    On {props.dropContract.chain.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-sm font-[family-name:var(--font-geist-sans)] font-semibold">
+                    Log in to Claim
+                  </h2>
+                </div>
               </>
             )}
           </>
