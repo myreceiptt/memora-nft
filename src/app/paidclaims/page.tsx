@@ -1,22 +1,26 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { balanceOf, claimTo, getNFT } from "thirdweb/extensions/erc1155";
 import {
+  ClaimButton,
   MediaRenderer,
   TransactionButton,
   useActiveAccount,
   useReadContract,
 } from "thirdweb/react";
 import {
-  memoraZeroEditionDrop,
-  memoraOneEditionDrop,
+  // memoraZeroEditionDrop,
+  // memoraOneEditionDrop,
+  // memoraOneEditionDropPolygon,
   // memoraT0kenDrop,
   // memoraTokenDrop,
+  // memoraTokenDropPolygon,
+  bukhariVirtualCollectibles,
 } from "@/consts/launched_contracts";
 import { client } from "@/consts/client";
 import { ThirdwebContract } from "thirdweb";
-import FeaturedCards from "@/components/home-page/FeaturedCards";
 import FeaturedAssets from "@/components/home-page/FeaturedAssets";
 
 const PaidClaims: React.FC = () => {
@@ -28,11 +32,11 @@ const PaidClaims: React.FC = () => {
         <main className="flex flex-col gap-8 row-start-2 items-center">
           <div className="flex flex-col gap-2 items-center">
             <h1 className="text-foreground dark:text-background text-center text-xl font-[family-name:var(--font-geist-sans)] font-semibold">
-              MEMORA NFT
+              BUKHARI VIRTUAL COLLECTIBLES
             </h1>
             <h2 className="text-foreground dark:text-background text-center text-lg font-semibold">
               <code className="bg-foreground dark:bg-background text-background dark:text-foreground px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold">
-                Free to Claim
+                Paid to Claim
               </code>
             </h2>
             <h3 className="text-foreground dark:text-background text-center text-lg font-semibold">
@@ -40,23 +44,35 @@ const PaidClaims: React.FC = () => {
               transactions since the MEMORA App pays for them on behalf of a
               user.
             </h3>
+            <h4 className="text-foreground dark:text-background text-center text-lg font-semibold">
+              <Link
+                href="https://testnets.opensea.io/collection/bukhari-virtual-collectibles"
+                target="_blank">
+                <code className="bg-foreground dark:bg-background text-background dark:text-foreground px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold">
+                  As Seen on OpenSea.IO
+                </code>
+              </Link>
+            </h4>
           </div>
           <div className="flex flex-col sm:flex-row gap-2 items-center">
             <NFTClaimer
               receiverAddress={smartAccount?.address}
-              dropContract={memoraZeroEditionDrop}
+              dropContract={bukhariVirtualCollectibles}
               tokenId={0n}
             />
-            <div className="h-auto w-[1px] bg-foreground dark:bg-background mx-12 mt-8" />
             <NFTClaimer
               receiverAddress={smartAccount?.address}
-              dropContract={memoraOneEditionDrop}
+              dropContract={bukhariVirtualCollectibles}
               tokenId={1n}
+            />
+            <NFTClaimer
+              receiverAddress={smartAccount?.address}
+              dropContract={bukhariVirtualCollectibles}
+              tokenId={2n}
             />
           </div>
         </main>
       </div>
-      <FeaturedCards />
       <FeaturedAssets />
     </div>
   );
@@ -99,15 +115,17 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
             ) : null}
             {props.receiverAddress ? (
               <>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
-                  {nft?.metadata.name}
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  On {props.dropContract.chain.name}
-                </h2>
-                <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
-                  You Own {ownedNfts?.toString() || "0"} Edition
-                </h2>
+                <div className="grid grid-col p-2">
+                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
+                    {nft?.metadata.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
+                    On {props.dropContract.chain.name}
+                  </h2>
+                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
+                    You Own {ownedNfts?.toString() || "0"} Edition
+                  </h2>
+                </div>
                 <TransactionButton
                   unstyled
                   className="rounded-lg p-2 text-foreground dark:text-background hover:text-background hover:dark:text-foreground border-2 border-solid border-transparent bg-background dark:bg-foreground hover:border-background hover:dark:border-foreground hover:bg-foreground hover:dark:bg-background transition-colors duration-300 ease-in-out items-center justify-center text-lg leading-9 font-[family-name:var(--font-geist-mono)] font-semibold uppercase"
@@ -125,8 +143,27 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
                   onTransactionConfirmed={async () => {
                     alert("Claim successful!");
                   }}>
-                  CLAIM NOW!
+                  ONLY 11 $MMR
                 </TransactionButton>
+                <ClaimButton
+                  unstyled
+                  className="rounded-lg p-2 text-foreground dark:text-background hover:text-background hover:dark:text-foreground border-2 border-solid border-transparent bg-background dark:bg-foreground hover:border-background hover:dark:border-foreground hover:bg-foreground hover:dark:bg-background transition-colors duration-300 ease-in-out items-center justify-center text-lg leading-9 font-[family-name:var(--font-geist-mono)] font-semibold uppercase"
+                  contractAddress={props.dropContract.address}
+                  chain={props.dropContract.chain}
+                  client={props.dropContract.client}
+                  claimParams={{
+                    type: "ERC1155",
+                    quantity: 1n,
+                    tokenId: 0n,
+                  }}
+                  onError={(error) => {
+                    alert(`Error: ${error.message}`);
+                  }}
+                  onTransactionConfirmed={async () => {
+                    alert("Claim successful!");
+                  }}>
+                  ONLY 11 $MMR
+                </ClaimButton>
               </>
             ) : (
               <>

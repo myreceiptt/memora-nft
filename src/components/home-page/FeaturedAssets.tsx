@@ -1,4 +1,4 @@
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import { NFT_CONTRACTS } from "@/consts/nft_contracts";
 
@@ -17,11 +17,11 @@ export default function FeaturedAssets() {
               <div
                 key={item.address}
                 className="flex flex-col p-2 w-full justify-items-center rounded-lg bg-foreground dark:bg-background text-background dark:text-foreground">
-                <Link
+                {/* <Link
                   href={`/collection/${item.chain.id.toString()}/${
                     item.address
                   }`}
-                  className="group">
+                  className="group"> */}
                   <Image
                     alt={`${item.title} Collection`}
                     src={`${item.thumbnailUrl}`}
@@ -35,7 +35,7 @@ export default function FeaturedAssets() {
                   <h3 className="text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold">
                     On {item.chain.name}
                   </h3>
-                </Link>
+                {/* </Link> */}
               </div>
             ))}
           </div>

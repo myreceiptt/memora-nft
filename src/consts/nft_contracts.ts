@@ -20,6 +20,20 @@ export type NftContract = {
  */
 export const NFT_CONTRACTS: NftContract[] = [
   {
+    address: "0x045C2bC19d61B7527B1d996548B67B2Fa8cD68e1",
+    chain: polygon,
+    title: "BUKHARI VC",
+    thumbnailUrl: "/nfts-icons/bukhari-virtual-collectibles.gif",
+    type: "ERC1155",
+  },
+  {
+    address: "0x0015C1dEb48c3aD0f5427cBbE81Cb36366F1621D",
+    chain: polygon,
+    title: "MEMORA ONE",
+    thumbnailUrl: "/nfts-icons/memora-zer0.gif",
+    type: "ERC1155",
+  },
+  {
     address: "0x1925B991C5e2eC45BA1f34786BAd405d58202140",
     chain: base,
     title: "MEMORA ONE",
@@ -110,13 +124,13 @@ export const NFT_CONTRACTS: NftContract[] = [
   //   thumbnailUrl: "/nfts-icons/my-receipt-of-eth.gif",
   //   type: "ERC1155",
   // },
-  {
-    address: "0x4309946De4Ac379E1dc0cB122dc347815898Ff2C",
-    chain: ethereum,
-    title: "/ˈdeTH ˌwiSH/",
-    thumbnailUrl: "/nfts-icons/deth-wish.gif",
-    type: "ERC721",
-  },
+  // {
+  //   address: "0x4309946De4Ac379E1dc0cB122dc347815898Ff2C",
+  //   chain: ethereum,
+  //   title: "/ˈdeTH ˌwiSH/",
+  //   thumbnailUrl: "/nfts-icons/deth-wish.gif",
+  //   type: "ERC721",
+  // },
   // {
   //   address: "0x562914ef273cddb3ddc02e68c4ce6d9b1e5e8fa7",
   //   chain: ethereum,
@@ -152,11 +166,11 @@ export const NFT_CONTRACTS: NftContract[] = [
   //   thumbnailUrl: "/nfts-icons/logo-pabrik-roti.png",
   //   type: "ERC721",
   // },
-  {
-    address: "0xc06fd77c1aec4dccefc2fe6b3649ec454585fb15",
-    chain: polygon,
-    title: "Anthropophobia",
-    thumbnailUrl: "/nfts-icons/anthropophobia-viruses.png",
-    type: "ERC721",
-  },
+  // {
+  //   address: "0xc06fd77c1aec4dccefc2fe6b3649ec454585fb15",
+  //   chain: polygon,
+  //   title: "Anthropophobia",
+  //   thumbnailUrl: "/nfts-icons/anthropophobia-viruses.png",
+  //   type: "ERC721",
+  // },
 ];

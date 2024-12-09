@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { balanceOf, claimTo, getNFT } from "thirdweb/extensions/erc1155";
 import {
   MediaRenderer,
@@ -9,14 +10,16 @@ import {
   useReadContract,
 } from "thirdweb/react";
 import {
-  memoraZeroEditionDrop,
-  memoraOneEditionDrop,
+  // memoraZeroEditionDrop,
+  // memoraOneEditionDrop,
+  // memoraOneEditionDropPolygon,
   // memoraT0kenDrop,
   // memoraTokenDrop,
+  // memoraTokenDropPolygon,
+  bukhariVirtualCollectibles,
 } from "@/consts/launched_contracts";
 import { client } from "@/consts/client";
 import { ThirdwebContract } from "thirdweb";
-import FeaturedCards from "@/components/home-page/FeaturedCards";
 import FeaturedAssets from "@/components/home-page/FeaturedAssets";
 
 const FreeClaims: React.FC = () => {
@@ -28,7 +31,7 @@ const FreeClaims: React.FC = () => {
         <main className="flex flex-col gap-8 row-start-2 items-center">
           <div className="flex flex-col gap-2 items-center">
             <h1 className="text-foreground dark:text-background text-center text-xl font-[family-name:var(--font-geist-sans)] font-semibold">
-              MEMORA NFT
+              BUKHARI VIRTUAL COLLECTIBLES
             </h1>
             <h2 className="text-foreground dark:text-background text-center text-lg font-semibold">
               <code className="bg-foreground dark:bg-background text-background dark:text-foreground px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold">
@@ -40,23 +43,35 @@ const FreeClaims: React.FC = () => {
               transactions since the MEMORA App pays for them on behalf of a
               user.
             </h3>
+            <h4 className="text-foreground dark:text-background text-center text-lg font-semibold">
+              <Link
+                href="https://testnets.opensea.io/collection/bukhari-virtual-collectibles"
+                target="_blank">
+                <code className="bg-foreground dark:bg-background text-background dark:text-foreground px-1 py-0.5 rounded text-base font-[family-name:var(--font-geist-mono)] font-semibold">
+                  As Seen on OpenSea.IO
+                </code>
+              </Link>
+            </h4>
           </div>
           <div className="flex flex-col sm:flex-row gap-2 items-center">
             <NFTClaimer
               receiverAddress={smartAccount?.address}
-              dropContract={memoraZeroEditionDrop}
-              tokenId={0n}
+              dropContract={bukhariVirtualCollectibles}
+              tokenId={3n}
             />
-            <div className="h-auto w-[1px] bg-foreground dark:bg-background mx-12 mt-8" />
             <NFTClaimer
               receiverAddress={smartAccount?.address}
-              dropContract={memoraOneEditionDrop}
-              tokenId={1n}
+              dropContract={bukhariVirtualCollectibles}
+              tokenId={4n}
+            />
+            <NFTClaimer
+              receiverAddress={smartAccount?.address}
+              dropContract={bukhariVirtualCollectibles}
+              tokenId={5n}
             />
           </div>
         </main>
       </div>
-      <FeaturedCards />
       <FeaturedAssets />
     </div>
   );

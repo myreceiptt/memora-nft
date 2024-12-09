@@ -20,15 +20,15 @@ export const MARKETPLACE_CONTRACTS: MarketplaceContract[] = [
   //   chain: polygon,
   // },
   // {
-  //   address: "0x...", // ENDHONESA DIGITAL
+  //   address: "0x1C204Fe1021a7B73478150b027eBa6D61f268b48", // ENDHONESA DIGITAL
   //   chain: base,
   // },
   // {
-  //   address: "0x...", // ENDHONESA DIGITAL
+  //   address: "0x32B238561648A9395Bed8840378c4ba6053F8D8F", // ENDHONESA DIGITAL
   //   chain: baseSepolia,
   // },
   {
-    address: "0x292111D4B26878F67Bae7941C5d0BD7bB272D5A1", // MEMORA MARKETPLACE
+    address: "0x...", // MEMORA MARKETPLACE
     chain: ethereum,
   },
   {
