@@ -189,16 +189,16 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
             ) : (
               <>
                 <div className="grid grid-col p-2">
-                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold uppercase">
                     {nft?.metadata.name}
                   </h2>
-                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
+                  <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold">
                     On {props.dropContract.chain.name}!
                   </h2>
                   <h2 className="text-background dark:text-foreground text-center text-xs font-[family-name:var(--font-geist-sans)] font-semibold">
                     0.0011 $ETH / EDITION
                   </h2>
-                  <h2 className="text-background dark:text-foreground text-center text-base font-[family-name:var(--font-geist-sans)] font-semibold">
+                  <h2 className="text-background dark:text-foreground text-center text-sm font-[family-name:var(--font-geist-sans)] font-semibold">
                     Log in to Claim!
                   </h2>
                 </div>

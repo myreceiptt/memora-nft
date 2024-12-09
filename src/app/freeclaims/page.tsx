@@ -2,10 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
-import { balanceOf, claimTo, getNFT } from "thirdweb/extensions/erc1155";
+import { balanceOf, getNFT } from "thirdweb/extensions/erc1155";
 import {
+  ClaimButton,
   MediaRenderer,
-  TransactionButton,
   useActiveAccount,
   useReadContract,
 } from "thirdweb/react";
@@ -163,17 +163,17 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
                     You Own {ownedNfts?.toString() || "0"} Edition
                   </h2>
                 </div>
-                <TransactionButton
+                <ClaimButton
                   unstyled
                   className="rounded-lg p-2 text-foreground dark:text-background hover:text-background hover:dark:text-foreground border-2 border-solid border-transparent bg-background dark:bg-foreground hover:border-background hover:dark:border-foreground hover:bg-foreground hover:dark:bg-background transition-colors duration-300 ease-in-out items-center justify-center text-lg leading-9 font-[family-name:var(--font-geist-mono)] font-semibold uppercase"
-                  transaction={() =>
-                    claimTo({
-                      contract: props.dropContract,
-                      tokenId: props.tokenId,
-                      to: props.receiverAddress!,
-                      quantity: 1n,
-                    })
-                  }
+                  contractAddress={props.dropContract.address}
+                  chain={props.dropContract.chain}
+                  client={props.dropContract.client}
+                  claimParams={{
+                    type: "ERC1155",
+                    quantity: 1n,
+                    tokenId: props.tokenId,
+                  }}
                   onError={(error) => {
                     props.padaGagal(error);
                   }}
@@ -181,7 +181,7 @@ const NFTClaimer: React.FC<NFTClaimerProps> = (props: NFTClaimerProps) => {
                     props.padaSukses();
                   }}>
                   CLAIM NOW!
-                </TransactionButton>
+                </ClaimButton>
               </>
             ) : (
               <>
