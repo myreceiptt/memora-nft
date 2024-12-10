@@ -25,7 +25,7 @@ export const bukhariVirtualCollectibles = getContract({
 
 // MEMORA TOKEN Drop on Polygon.
 export const memoraTokenDropPolygon = getContract({
-  address: "",
+  address: "0xc0026436Ac3099Dd8a7Cac8660e2e1CE21FbE564",
   chain: polygon,
   client,
 });

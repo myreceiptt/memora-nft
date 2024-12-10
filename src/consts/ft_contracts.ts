@@ -40,6 +40,11 @@ export const SUPPORTED_TOKENS: SupportedTokens[] = [
         icon: "/erc20-icons/oioi.png",
       },
       {
+        tokenAddress: "0xc0026436Ac3099Dd8a7Cac8660e2e1CE21FbE564",
+        symbol: "MMR",
+        icon: "/erc20-icons/memora.png",
+      },
+      {
         tokenAddress: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
         symbol: "USDC",
         icon: "/erc20-icons/usdc.png",

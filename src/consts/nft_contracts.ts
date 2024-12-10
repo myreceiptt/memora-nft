@@ -21,7 +21,7 @@ export type NftContract = {
 export const NFT_CONTRACTS: NftContract[] = [
   {
     address: "0x045C2bC19d61B7527B1d996548B67B2Fa8cD68e1",
-    chain: polygon,
+    chain: baseSepolia,
     title: "BUKHARI VC",
     thumbnailUrl: "/nfts-icons/bukhari-virtual-collectibles.gif",
     type: "ERC1155",
@@ -145,20 +145,20 @@ export const NFT_CONTRACTS: NftContract[] = [
   //   thumbnailUrl: "/nfts-icons/huskee-nft.png",
   //   type: "ERC721",
   // },
-  {
-    address: "0xe75f06bff5f03769748374376443a43ff0d1fd85",
-    chain: ethereum,
-    title: "Prof. NOTA Genesis",
-    thumbnailUrl: "/nfts-icons/prof-nota-genesis.png",
-    type: "ERC721",
-  },
-  {
-    address: "0x6d2723cb02c558cf67473dc959ac08737b6129a9",
-    chain: polygon,
-    title: "The ROTY BROI",
-    thumbnailUrl: "/nfts-icons/the-roty-broi.png",
-    type: "ERC721",
-  },
+  // {
+  //   address: "0xe75f06bff5f03769748374376443a43ff0d1fd85",
+  //   chain: ethereum,
+  //   title: "Prof. NOTA Genesis",
+  //   thumbnailUrl: "/nfts-icons/prof-nota-genesis.png",
+  //   type: "ERC721",
+  // },
+  // {
+  //   address: "0x6d2723cb02c558cf67473dc959ac08737b6129a9",
+  //   chain: polygon,
+  //   title: "The ROTY BROI",
+  //   thumbnailUrl: "/nfts-icons/the-roty-broi.png",
+  //   type: "ERC721",
+  // },
   // {
   //   address: "0x6710e0f18270be32f9590503e306997b3162b83e",
   //   chain: polygon,
