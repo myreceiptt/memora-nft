@@ -1,5 +1,5 @@
 import type { Chain } from "thirdweb";
-import { ethereum, polygon, base, baseSepolia } from "thirdweb/chains";
+import { polygon, base, baseSepolia } from "thirdweb/chains";
 
 export type NftContract = {
   address: string;
